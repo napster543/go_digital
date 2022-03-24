@@ -1,0 +1,40 @@
+
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" name="filterPost" [(ngModel)]="filterPost" >
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-danger" type="button" (click)="ListSearchMovies()">Buscar</button>
+        </div>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col" *ngFor="let ListMoviesPopular of ListMoviesPopulars | filter:filterPost">
+          <div class="card shadow-sm">
+        
+            <img src="{{ImgMovieOrigin}}{{ListMoviesPopular.backdrop_path}}" alt="">
+
+            <div class="card-body">
+              <h5 class="card-title">{{ListMoviesPopular.title}}</h5>
+              <p class="card-text">
+                  {{ListMoviesPopular.overview | slice:0:204}} ...
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-primary" [routerLink]="['/ver_peliculas/', ListMoviesPopular.id]">Pelicula</button>
+                  
+                </div>
+                <small class="text-muted">{{ListMoviesPopular.release_date}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+        
+      </div>
+    </div>
+  </div>
